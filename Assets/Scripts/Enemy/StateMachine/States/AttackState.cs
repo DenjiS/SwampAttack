@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class AttackState : State
 {
-    private const string AttackCommand = "TopAttack";
+    private const string AttackCommand = "Attack";
 
     [SerializeField] private int _damage;
     [SerializeField] private float _delay;

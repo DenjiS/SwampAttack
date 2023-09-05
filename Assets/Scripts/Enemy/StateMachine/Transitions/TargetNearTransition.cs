@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class DistanceTransition : Transition
+[RequireComponent(typeof(TargetDistance))]
+public class TargetNearTransition : Transition
 {
-    [SerializeField] private float _transitionRange;
-    [SerializeField] private float _rangeSpread;
+    private float _transitionRange;
 
     private void Start()
     {
-        _transitionRange += Random.Range(- _rangeSpread, _rangeSpread);
+        _transitionRange = GetComponent<TargetDistance>().TransitionRange;
     }
 
     private void Update()
