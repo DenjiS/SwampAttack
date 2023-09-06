@@ -6,13 +6,13 @@ public class DiedTransition : Transition
     private void Awake()
     {
         Enemy enemy = GetComponent<Enemy>();
-        enemy.Died += Die;
+        enemy.Died += OnEnemyDied;
     }
 
-    private void Die(Enemy enemy)
+    private void OnEnemyDied(Enemy enemy)
     {
         NeedTransit = true;
 
-        enemy.Died -= Die;
+        enemy.Died -= OnEnemyDied;
     }
 }

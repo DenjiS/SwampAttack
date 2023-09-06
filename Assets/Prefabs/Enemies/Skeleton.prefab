@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 3920182430626154053}
   - component: {fileID: 7759675190750362745}
   - component: {fileID: 501046141919534544}
+  - component: {fileID: 6785235614456741686}
+  - component: {fileID: 5826051503524282301}
   - component: {fileID: 1618416450272961199}
   - component: {fileID: 8670557365356294329}
   - component: {fileID: 3824644229659550816}
@@ -217,9 +219,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitions:
-  - {fileID: 501046141919534544}
   - {fileID: 8670557365356294329}
   - {fileID: 740087779472542780}
+  - {fileID: 5826051503524282301}
+  - {fileID: 501046141919534544}
   _speed: 4
 --- !u!114 &3920182430626154053
 MonoBehaviour:
@@ -247,9 +250,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitions:
-  - {fileID: 3920182430626154053}
   - {fileID: 8670557365356294329}
   - {fileID: 740087779472542780}
+  - {fileID: 5826051503524282301}
+  - {fileID: 3920182430626154053}
   _damage: 5
   _delay: 1
 --- !u!114 &501046141919534544
@@ -265,6 +269,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 7759675190750362745}
+--- !u!114 &6785235614456741686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27430397692835818}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb336e0e4cf0ada4e88de63c52da5cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitions:
+  - {fileID: 8670557365356294329}
+  - {fileID: 740087779472542780}
+  - {fileID: 501046141919534544}
+  - {fileID: 3920182430626154053}
+  _stunDuration: 0.3
+--- !u!114 &5826051503524282301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27430397692835818}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af4be329ba00eaa489e314d4e2f4cf42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetState: {fileID: 6785235614456741686}
 --- !u!114 &1618416450272961199
 MonoBehaviour:
   m_ObjectHideFlags: 0

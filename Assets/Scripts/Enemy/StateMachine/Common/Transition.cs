@@ -10,7 +10,7 @@ public abstract class Transition : MonoBehaviour
 
     protected Player Target { get; private set; }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         NeedTransit = false;
     }
