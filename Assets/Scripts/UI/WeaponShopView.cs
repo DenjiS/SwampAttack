@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class WeaponView : MonoBehaviour
+public class WeaponShopView : MonoBehaviour
 {
     [SerializeField] private TMP_Text _label;
     [SerializeField] private TMP_Text _price;
@@ -12,7 +12,7 @@ public class WeaponView : MonoBehaviour
 
     private Weapon _weapon;
 
-    public event UnityAction<Weapon, WeaponView> SellButtonClicked;
+    public event UnityAction<Weapon, WeaponShopView> SellButtonClicked;
 
     private void OnEnable()
     {
@@ -29,10 +29,8 @@ public class WeaponView : MonoBehaviour
 
     private void TryLockItem()
     {
-        {
-            if (_weapon.IsBuyed)
-                _sellButton.interactable = false;
-        }
+        if (_weapon.IsBuyed)
+            _sellButton.interactable = false;
     }
 
     public void Render(Weapon weapon)

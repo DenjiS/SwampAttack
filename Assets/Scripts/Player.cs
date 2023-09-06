@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private int _currentWeaponNumber = 0;
     private int _health;
 
+    public event UnityAction<Weapon> WeaponChanged;
     public event UnityAction<int, int> HealthChanged;
     public event UnityAction<int> MoneyChanged;
 
@@ -34,8 +35,18 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            _currentWeapon.Shoot(_shootPoint);
-            _animator.Play("Shoot");
+            Vector2 aimPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            if (aimPoint.x > transform.position.x)
+                transform.localScale = new Vector2(-1, 1);
+            else
+                transform.localScale = new Vector2(1, 1);
+
+            if (_currentWeapon.CanAttack)
+            {
+                _currentWeapon.Shoot(_shootPoint.transform.position, aimPoint);
+                _animator.Play("Shoot");
+            }
         }
     }
 
@@ -87,5 +98,11 @@ public class Player : MonoBehaviour
     private void ChangeWeapon(Weapon weapon)
     {
         _currentWeapon = weapon;
+        WeaponChanged?.Invoke(weapon);
+    }
+
+    private void OnWeaponShooted()
+    {
+
     }
 }

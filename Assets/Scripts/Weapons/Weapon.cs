@@ -17,10 +17,12 @@ public abstract class Weapon : MonoBehaviour
 
     public bool IsBuyed => _isBuyed;
 
+    public abstract bool CanAttack { get; }
+
     public void Buy()
     {
         _isBuyed = true;
     }
 
-    public abstract void Shoot(Transform position);
+    public abstract void Shoot(Vector2 shootPoint, Vector2 aimPoint);
 }
