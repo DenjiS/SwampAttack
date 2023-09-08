@@ -17,7 +17,10 @@ public class Gun : Weapon
 
     public event UnityAction<float> ReloadingChanged;
 
-    public override bool CanAttack => _isReloading == false && base.CanAttack;
+    public int CurrentAmmo => _ammo;
+
+    public override bool CanAttack =>
+        _isReloading == false && base.CanAttack;
 
     private void Start()
     {
@@ -39,9 +42,6 @@ public class Gun : Weapon
         base.Attack(shootPoint, aimPoint);
     }
 
-    protected virtual void PerformAttack(Vector2 shootPoint, Vector2 aimPoint) =>
-        LaunchBullet(shootPoint, aimPoint);
-
     protected void LaunchBullet(Vector2 shootPoint, Vector2 aimPoint)
     {
         Bullet bullet = Instantiate(_bullet, shootPoint, Quaternion.identity);
@@ -53,6 +53,9 @@ public class Gun : Weapon
         Vector2 force = (aimPoint - shootPoint).normalized * bullet.Force;
         bullet.Rigidbody.AddForce(force, ForceMode2D.Impulse);
     }
+
+    protected virtual void PerformAttack(Vector2 shootPoint, Vector2 aimPoint) =>
+        LaunchBullet(shootPoint, aimPoint);
 
     private IEnumerator Reloading()
     {

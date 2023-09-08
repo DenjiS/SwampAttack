@@ -16,6 +16,9 @@ public class MoveState : State
 
     private void Update()
     {
+        if (Target == null)
+            return;
+
         transform.position = Vector2.MoveTowards(
             transform.position, 
             Target.transform.position, 

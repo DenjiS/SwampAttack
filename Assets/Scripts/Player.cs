@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
 
     private Animator _animator;
     private Weapon _currentWeapon;
+
+    private Vector2 _baseScale;
+    private Vector2 _oppositeScale;
+
     private int _currentWeaponNumber = 0;
     private int _health;
 
@@ -23,6 +27,9 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+
+        _baseScale = transform.localScale;
+        _oppositeScale = new Vector2(_baseScale.x *= -1, _baseScale.y);
     }
 
     private void Start()
@@ -40,9 +47,9 @@ public class Player : MonoBehaviour
             Vector2 aimPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             if (aimPoint.x > transform.position.x)
-                transform.localScale = new Vector2(-1, 1);
+                transform.localScale = _oppositeScale;
             else
-                transform.localScale = new Vector2(1, 1);
+                transform.localScale = _baseScale;
 
             if (_currentWeapon.CanAttack)
             {

@@ -54,6 +54,8 @@ public class CurrentWeaponView : MonoBehaviour
             gun.ReloadingChanged += OnReloadChanged;
 
             _currentGun = gun;
+
+            _ammo.text = gun.CurrentAmmo.ToString();
         }
         else
         {

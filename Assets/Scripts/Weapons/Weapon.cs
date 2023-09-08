@@ -43,12 +43,12 @@ public abstract class Weapon : MonoBehaviour
     {
         AudioPlayer.PlayOneShot(_attackSound);
 
-        _canAttack = false;
         StartCoroutine(AttackWaiting());
     }
 
     private IEnumerator AttackWaiting()
     {
+        _canAttack = false;
         yield return _attackDelay;
         _canAttack = true;
     }
