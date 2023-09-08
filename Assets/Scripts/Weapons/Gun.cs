@@ -2,44 +2,49 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(AudioSource))]
 public class Gun : Weapon
 {
-    [SerializeField] private float _timeBetweenShots;
+    [Header("Gun Options")]
+    [SerializeField] private AudioClip _reloadSound;
+    [SerializeField] private Bullet _bullet;
     [SerializeField] private float _reloadTime;
     [SerializeField] private int _ammoSize;
 
-    private AudioSource _sound;
-    private WaitForSeconds _shootDelay;
-    private WaitForSeconds _reloadDelay;
-
-    private int _ammoCount;
-    private bool _canShootNext = true;
+    private int _ammo;
     private bool _isReloading = false;
 
     public event UnityAction<int> AmmoChanged;
-    //public event UnityAction Shooted;
 
-    public override bool CanAttack => _canShootNext && _isReloading == false;
+    public event UnityAction<float> ReloadingChanged;
 
-    private void Awake()
+    public override bool CanAttack => _isReloading == false && base.CanAttack;
+
+    private void Start()
     {
-        _sound = GetComponent<AudioSource>();
-
-        _shootDelay = new WaitForSeconds(_timeBetweenShots);
-        _reloadDelay = new WaitForSeconds(_reloadTime);
-
-        _ammoCount = _ammoSize;
+        _ammo = _ammoSize;
     }
 
-    public override void Shoot(Vector2 shootPoint, Vector2 aimPoint)
+    public override void Attack(Vector2 shootPoint, Vector2 aimPoint)
     {
-        if (_canShootNext == false || _isReloading)
+        if (CanAttack == false)
             throw new UnityException("Weapon is not ready");
 
-        _sound.Play();
+        PerformAttack(shootPoint, aimPoint);
 
-        Bullet bullet = Instantiate(Bullet, shootPoint, Quaternion.identity);
+        AmmoChanged?.Invoke(--_ammo);
+
+        if (_ammo <= 0)
+            StartCoroutine(Reloading());
+
+        base.Attack(shootPoint, aimPoint);
+    }
+
+    protected virtual void PerformAttack(Vector2 shootPoint, Vector2 aimPoint) =>
+        LaunchBullet(shootPoint, aimPoint);
+
+    protected void LaunchBullet(Vector2 shootPoint, Vector2 aimPoint)
+    {
+        Bullet bullet = Instantiate(_bullet, shootPoint, Quaternion.identity);
         bullet.transform.parent = null;
 
         if (aimPoint.x > shootPoint.x)
@@ -47,30 +52,28 @@ public class Gun : Weapon
 
         Vector2 force = (aimPoint - shootPoint).normalized * bullet.Force;
         bullet.Rigidbody.AddForce(force, ForceMode2D.Impulse);
-
-        StartCoroutine(WaitAfterShoot());
-
-        AmmoChanged?.Invoke(--_ammoCount);
-
-        if (_ammoCount == 0)
-            StartCoroutine(Reload());
-
     }
 
-    private IEnumerator WaitAfterShoot()
+    private IEnumerator Reloading()
     {
-        _canShootNext = false;
-        yield return _shootDelay;
-        _canShootNext = true;
-    }
+        float elapsed = 0;
 
-    private IEnumerator Reload()
-    {
+        AudioPlayer.PlayOneShot(_reloadSound);
+
         _isReloading = true;
-        yield return _reloadDelay;
 
-        _ammoCount = _ammoSize;
-        AmmoChanged?.Invoke(_ammoCount);
+        while (elapsed < _reloadTime)
+        {
+            ReloadingChanged?.Invoke(Mathf.Lerp(0f, 1f, elapsed / _reloadTime));
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        ReloadingChanged?.Invoke(0f);
+
+        _ammo = _ammoSize;
+        AmmoChanged?.Invoke(_ammo);
+
         _isReloading = false;
     }
 }

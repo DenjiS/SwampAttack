@@ -27,12 +27,6 @@ public class WeaponShopView : MonoBehaviour
 
     }
 
-    private void TryLockItem()
-    {
-        if (_weapon.IsBuyed)
-            _sellButton.interactable = false;
-    }
-
     public void Render(Weapon weapon)
     {
         _weapon = weapon;
@@ -45,5 +39,11 @@ public class WeaponShopView : MonoBehaviour
     private void OnButtonClick()
     {
         SellButtonClicked.Invoke(_weapon, this);
+    }
+
+    private void TryLockItem()
+    {
+        if (_weapon.IsBuyed)
+            _sellButton.interactable = false;
     }
 }

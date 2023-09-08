@@ -12,6 +12,9 @@ public class TargetNearTransition : Transition
 
     private void Update()
     {
+        if (Target == null)
+            return;
+
         if (Vector2.Distance(transform.position, Target.transform.position) < _transitionRange)
             NeedTransit = true;
     }

@@ -29,11 +29,13 @@ public class Player : MonoBehaviour
     {
         _health = _maxHealth;
         ChangeWeapon(_weapons[_currentWeaponNumber]);
+
+        MoneyChanged?.Invoke(Money);
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             Vector2 aimPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -44,7 +46,7 @@ public class Player : MonoBehaviour
 
             if (_currentWeapon.CanAttack)
             {
-                _currentWeapon.Shoot(_shootPoint.transform.position, aimPoint);
+                _currentWeapon.Attack(_shootPoint.transform.position, aimPoint);
                 _animator.Play("Shoot");
             }
         }
@@ -99,10 +101,5 @@ public class Player : MonoBehaviour
     {
         _currentWeapon = weapon;
         WeaponChanged?.Invoke(weapon);
-    }
-
-    private void OnWeaponShooted()
-    {
-
     }
 }

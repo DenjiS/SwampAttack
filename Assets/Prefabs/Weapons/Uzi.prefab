@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1851660758792208309}
   - component: {fileID: -8916696071084793636}
   m_Layer: 0
-  m_Name: Pistol
+  m_Name: Uzi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,16 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackSound: {fileID: 8300000, guid: 1e8ecbff395b9f24b950c64644032795, type: 3}
-  _icon: {fileID: 21300000, guid: 0ef299252e7b8d7468b96f9c19de3399, type: 3}
-  _label: "\u041F\u0438\u0441\u0442\u043E\u043B\u0435\u0442"
-  _timeBetweenAttacks: 0.4
-  _price: 1
-  _isBuyed: 0
-  _reloadingImage: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 6fcb3ab963980904499598f1d32c6d58, type: 3}
+  _label: "\u0423\u0437\u0438"
+  _timeBetweenAttacks: 0.08
+  _price: 10
+  _isBuyed: 1
   _reloadSound: {fileID: 0}
   _bullet: {fileID: 5256796306486695464, guid: 8f4c1b505b3575e4785ea01b58357064, type: 3}
-  _reloadTime: 5
-  _ammoSize: 10
+  _reloadTime: 8
+  _ammoSize: 15
 --- !u!82 &-8916696071084793636
 AudioSource:
   m_ObjectHideFlags: 0
