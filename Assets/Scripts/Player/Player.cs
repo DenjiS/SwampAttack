@@ -5,6 +5,9 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour
 {
+    private const string WeaponBoolName = "hasGun";
+    private const string AttackTriggerName = "attacked";
+
     [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] private int _maxHealth;
@@ -48,7 +51,7 @@ public class Player : MonoBehaviour
             if (_currentWeapon.CanAttack)
             {
                 _currentWeapon.Attack(_shootPoint.transform.position, aimPoint);
-                _animator.Play("Shoot");
+                _animator.SetTrigger(AttackTriggerName);
             }
         }
     }
@@ -102,5 +105,7 @@ public class Player : MonoBehaviour
     {
         _currentWeapon = weapon;
         WeaponChanged?.Invoke(weapon);
+
+        _animator.SetBool(WeaponBoolName, weapon is Gun);
     }
 }

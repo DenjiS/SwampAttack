@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class MoveState : State
+public class EnemyMoveState : State
 {
     private const string MoveCommand = "Move";
 
@@ -28,10 +28,5 @@ public class MoveState : State
     private void OnEnable()
     {
         _animator.Play(MoveCommand);
-    }
-
-    private void OnDisable()
-    {
-        _animator.StopPlayback();
     }
 }

@@ -5588,12 +5588,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waves:
+  - Template: {fileID: 7893579868181555021, guid: 4f3973708c45c6d4a82d501054755983, type: 3}
+    Delay: 4
+    Count: 2
   - Template: {fileID: 27430397692835818, guid: f506af58105dd174bb223aa86ff0068d, type: 3}
     Delay: 1
     Count: 5
-  - Template: {fileID: 7893579868181555021, guid: 4f3973708c45c6d4a82d501054755983, type: 3}
-    Delay: 0.5
-    Count: 10
   _spawnPoint: {fileID: 1270420785}
   _player: {fileID: 1436196516}
 --- !u!1 &1283607492
