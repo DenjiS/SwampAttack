@@ -27,6 +27,11 @@ public class WeaponShopView : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        TryLockItem();
+    }
+
     public void Render(Weapon weapon)
     {
         _weapon = weapon;

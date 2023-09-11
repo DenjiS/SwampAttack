@@ -8,7 +8,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private WeaponShopView _template;
     [SerializeField] private GameObject _itemContainer;
 
-    private void Start()
+    private void Awake()
     {
         for (int i = 0; i < _weapons.Count; i++)
         {
