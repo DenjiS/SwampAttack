@@ -24,7 +24,6 @@ public class WeaponShopView : MonoBehaviour
     {
         _sellButton.onClick.RemoveListener(OnButtonClick);
         _sellButton.onClick.RemoveListener(TryLockItem);
-
     }
 
     private void Start()
