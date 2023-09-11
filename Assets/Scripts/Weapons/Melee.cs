@@ -7,6 +7,7 @@ public class Melee : Weapon
 
     public override void Attack(Vector2 shootPoint, Vector2 aimPoint)
     {
+
         RaycastHit2D[] hits = Physics2D.CircleCastAll(shootPoint, _radius, Vector2.zero, 0, LayerMask.GetMask("Enemy"));
 
         foreach (RaycastHit2D hit in hits)
@@ -17,5 +18,7 @@ public class Melee : Weapon
                 .GetComponent<Enemy>()
                 .TakeDamage(_damage);
         }
+
+        base.Attack(shootPoint, aimPoint);
     }
 }

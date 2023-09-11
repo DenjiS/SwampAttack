@@ -5601,12 +5601,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waves:
-  - Template: {fileID: 7893579868181555021, guid: 4f3973708c45c6d4a82d501054755983, type: 3}
-    Delay: 4
-    Count: 2
   - Template: {fileID: 27430397692835818, guid: f506af58105dd174bb223aa86ff0068d, type: 3}
     Delay: 1
     Count: 5
+  - Template: {fileID: 7893579868181555021, guid: 4f3973708c45c6d4a82d501054755983, type: 3}
+    Delay: 1
+    Count: 2
   _spawnPoint: {fileID: 1270420785}
   _player: {fileID: 1436196516}
 --- !u!1 &1283607492
@@ -6214,7 +6214,7 @@ Transform:
   m_GameObject: {fileID: 1478373422}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02499938, y: 3.2286968, z: 0}
+  m_LocalPosition: {x: -0.03, y: 3.2286968, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7651,10 +7651,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2503744120465466377, guid: ed2d9095e337e134f827415343eaab62, type: 3}
+      propertyPath: _price
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2503744120465466377, guid: ed2d9095e337e134f827415343eaab62, type: 3}
+      propertyPath: _isBuyed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4075221562058058345, guid: ed2d9095e337e134f827415343eaab62, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7741037516904013050, guid: ed2d9095e337e134f827415343eaab62, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8239292492470356531, guid: ed2d9095e337e134f827415343eaab62, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.12
@@ -7693,6 +7705,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8239292492470356531, guid: ed2d9095e337e134f827415343eaab62, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8998306632759765924, guid: ed2d9095e337e134f827415343eaab62, type: 3}
+      propertyPath: _isBuyed
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

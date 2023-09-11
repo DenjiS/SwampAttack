@@ -59,7 +59,7 @@ public class Gun : Weapon
 
     private IEnumerator Reloading()
     {
-        float elapsed = 0;
+        float elapsed = 0f;
 
         AudioPlayer.PlayOneShot(_reloadSound);
 

@@ -52,7 +52,7 @@ MonoBehaviour:
   _price: 5
   _isBuyed: 0
   _radius: 0.4
-  _damage: 0
+  _damage: 1000
 --- !u!82 &8427938729263895536
 AudioSource:
   m_ObjectHideFlags: 0
