@@ -48,10 +48,8 @@ public abstract class Weapon : MonoBehaviour
 
     private IEnumerator AttackWaiting()
     {
-        Debug.Log("waiting coroutine started");
         _canAttack = false;
         yield return _attackDelay;
         _canAttack = true;
-        Debug.Log("waiting coroutine ended");
     }
 }

@@ -35,19 +35,13 @@ public class Gun : Weapon
             throw new UnityException("Weapon is not ready");
 
         PerformAttack(shootPoint, aimPoint);
-        Debug.Log($"attack performed");
 
         AmmoChanged?.Invoke(--_ammo);
-        Debug.Log($"ammo changed");
 
         if (_ammo <= 0)
             StartCoroutine(Reloading());
 
-        Debug.Log($"reload checked");
-
         base.Attack(shootPoint, aimPoint);
-
-        Debug.Log($"base attack invoked");
     }
 
     protected void LaunchBullet(Vector2 shootPoint, Vector2 aimPoint)
