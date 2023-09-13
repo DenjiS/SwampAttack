@@ -30,7 +30,6 @@ public class Shotgun : Gun
         {
             Vector2 bulletShootPoint = new(shootPoint.x, lowestSpawnYPosition + _spawnStep * i);
             Vector2 bulletAimPoint = new(aimPoint.x, lowestDirectionYPosition + _directionStep * i + _directionRaise);
-            Debug.Log($"stupid bullet {i}");
             LaunchBullet(bulletShootPoint, bulletAimPoint);
         }
     }
