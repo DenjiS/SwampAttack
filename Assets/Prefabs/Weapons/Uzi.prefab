@@ -51,7 +51,7 @@ MonoBehaviour:
   _timeBetweenAttacks: 0.08
   _price: 10
   _isBuyed: 1
-  _reloadSound: {fileID: 0}
+  _reloadSound: {fileID: 8300000, guid: f98dae35ab0d4584fbeb772b0c1fc0b8, type: 3}
   _bullet: {fileID: 5256796306486695464, guid: 8f4c1b505b3575e4785ea01b58357064, type: 3}
   _reloadTime: 8
   _ammoSize: 15

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3caad1a754477894fbf9f179ed627495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackSound: {fileID: 0}
+  _attackSound: {fileID: 8300000, guid: 680d495f6c89ef541aeb885468b5da0f, type: 3}
   _icon: {fileID: 21300000, guid: 1e0b3f955a1fd3045bdb03ba0730b7da, type: 3}
   _label: Axe
   _timeBetweenAttacks: 1
