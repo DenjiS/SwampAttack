@@ -15,20 +15,17 @@ public class Bullet : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.TryGetComponent<Bullet>(out _))
+            return;
+
         if (collision.gameObject.TryGetComponent(out Enemy enemy))
         {
             enemy.TakeDamage(_damage);
 
             Destroy(gameObject);
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.TryGetComponent<Bullet>(out _))
-            return;
 
         Destroy(gameObject);
     }
