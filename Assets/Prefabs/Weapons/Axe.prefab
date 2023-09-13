@@ -52,7 +52,7 @@ MonoBehaviour:
   _price: 5
   _isBuyed: 0
   _radius: 0.4
-  _damage: 1000
+  _damage: 100
 --- !u!82 &8427938729263895536
 AudioSource:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
