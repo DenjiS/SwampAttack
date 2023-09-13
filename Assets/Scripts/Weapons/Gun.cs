@@ -31,9 +31,6 @@ public class Gun : Weapon
 
     public override void Attack(Vector2 shootPoint, Vector2 aimPoint)
     {
-        if (CanAttack == false)
-            throw new UnityException("Weapon is not ready");
-
         PerformAttack(shootPoint, aimPoint);
 
         AmmoChanged?.Invoke(--_ammo);
