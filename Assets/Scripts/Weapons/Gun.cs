@@ -6,7 +6,7 @@ public class Gun : Weapon
 {
     [Header("Gun Options")]
     [SerializeField] private AudioClip _reloadSound;
-    [SerializeField] private Bullet _bullet;
+    [SerializeField] protected Bullet _bullet;
     [SerializeField] private float _reloadTime;
     [SerializeField] private int _ammoSize;
 
@@ -22,8 +22,10 @@ public class Gun : Weapon
     public override bool CanAttack =>
         _isReloading == false && base.CanAttack;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
+
         _ammo = _ammoSize;
     }
 
@@ -33,13 +35,19 @@ public class Gun : Weapon
             throw new UnityException("Weapon is not ready");
 
         PerformAttack(shootPoint, aimPoint);
+        Debug.Log($"attack performed");
 
         AmmoChanged?.Invoke(--_ammo);
+        Debug.Log($"ammo changed");
 
         if (_ammo <= 0)
             StartCoroutine(Reloading());
 
+        Debug.Log($"reload checked");
+
         base.Attack(shootPoint, aimPoint);
+
+        Debug.Log($"base attack invoked");
     }
 
     protected void LaunchBullet(Vector2 shootPoint, Vector2 aimPoint)
@@ -61,8 +69,6 @@ public class Gun : Weapon
     {
         float elapsed = 0f;
 
-        AudioPlayer.PlayOneShot(_reloadSound);
-
         _isReloading = true;
 
         while (elapsed < _reloadTime)
@@ -78,5 +84,7 @@ public class Gun : Weapon
         AmmoChanged?.Invoke(_ammo);
 
         _isReloading = false;
+
+        AudioPlayer.PlayOneShot(_reloadSound);
     }
 }

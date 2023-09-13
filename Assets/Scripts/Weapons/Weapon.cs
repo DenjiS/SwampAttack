@@ -28,7 +28,7 @@ public abstract class Weapon : MonoBehaviour
 
     protected AudioSource AudioPlayer { get; private set; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         AudioPlayer = GetComponent<AudioSource>();
         _attackDelay = new WaitForSeconds(_timeBetweenAttacks);
@@ -41,15 +41,17 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual void Attack(Vector2 shootPoint, Vector2 aimPoint)
     {
-        AudioPlayer.PlayOneShot(_attackSound);
-
         StartCoroutine(AttackWaiting());
+
+        AudioPlayer.PlayOneShot(_attackSound);
     }
 
     private IEnumerator AttackWaiting()
     {
+        Debug.Log("waiting coroutine started");
         _canAttack = false;
         yield return _attackDelay;
         _canAttack = true;
+        Debug.Log("waiting coroutine ended");
     }
 }
