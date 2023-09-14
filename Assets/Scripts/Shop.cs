@@ -5,10 +5,10 @@ public class Shop : MonoBehaviour
 {
     [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private Player _player;
-    [SerializeField] private WeaponView _template;
+    [SerializeField] private WeaponShopView _template;
     [SerializeField] private GameObject _itemContainer;
 
-    private void Start()
+    private void Awake()
     {
         for (int i = 0; i < _weapons.Count; i++)
         {
@@ -18,17 +18,17 @@ public class Shop : MonoBehaviour
 
     private void AddItem(Weapon weapon)
     {
-        WeaponView view = Instantiate(_template, _itemContainer.transform);
+        WeaponShopView view = Instantiate(_template, _itemContainer.transform);
         view.SellButtonClicked += OnSellButtonClick;
         view.Render(weapon);
     }
 
-    private void OnSellButtonClick(Weapon weapon, WeaponView view)
+    private void OnSellButtonClick(Weapon weapon, WeaponShopView view)
     {
         TrySellWeapon(weapon, view);
     }
 
-    private void TrySellWeapon(Weapon weapon, WeaponView view)
+    private void TrySellWeapon(Weapon weapon, WeaponShopView view)
     {
         if (weapon.Price <= _player.Money)
         {

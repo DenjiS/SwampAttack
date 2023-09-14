@@ -191,7 +191,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset_24
+      name: Inner_0
       rect:
         serializedVersion: 2
         x: 128
@@ -212,7 +212,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset_25
+      name: Inner_1
       rect:
         serializedVersion: 2
         x: 144
@@ -338,7 +338,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset_33
+      name: Inner_2
       rect:
         serializedVersion: 2
         x: 128
@@ -359,7 +359,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset_34
+      name: Inner_3
       rect:
         serializedVersion: 2
         x: 144
@@ -1504,10 +1504,12 @@ TextureImporter:
       GroundGrass_7: 1226492572
       GroundGrass_8: 1129550230
       GroundGrass_9: -969604261
+      Inner_0: -2070241761
+      Inner_1: 1436594189
+      Inner_2: -1268246972
+      Inner_3: -1861978227
       Tileset_22: 1386871116
       Tileset_23: -1762750808
-      Tileset_24: -2070241761
-      Tileset_25: 1436594189
       Tileset_26: 2043006191
       Tileset_27: -32283562
       Tileset_28: 1722033126
@@ -1515,8 +1517,6 @@ TextureImporter:
       Tileset_30: -1434564017
       Tileset_31: 669481223
       Tileset_32: 1678099157
-      Tileset_33: -1268246972
-      Tileset_34: -1861978227
       Tileset_35: 1796264156
       Tileset_36: -389902630
       Tileset_37: 1062730766
